@@ -31,6 +31,20 @@ android {
         namespace "com.shekarmudaliyar.social_share"
     }
 
+    // This fixes this issue:
+    // Execution failed for task ':social_share:compileDebugKotlin'.
+    // > 'compileDebugJavaWithJavac' task (current target is 1.8) and 'compileDebugKotlin' task (current target is 17) 
+    // jvm target compatibility should be set to the same Java version.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    // -------------------------------------------------------------
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
